@@ -26,3 +26,6 @@ class Person:
 
     def get_gender(self):
         return "This person is a: " + self.gender
+
+    def __str__(self):
+        return "I am a person. My name is: " + self.first_name + " " + self.last_name

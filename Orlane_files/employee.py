@@ -12,3 +12,6 @@ class Employee(Person):
 
     def get_role(self):
         return self.role
+
+    def __str__(self):
+        return "I am a employee. My name is: " + self.first_name + " " + self.last_name

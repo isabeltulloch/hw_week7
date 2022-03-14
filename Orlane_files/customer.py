@@ -7,9 +7,13 @@ class Customer(Person):
         super(Customer, self).__init__(first_name, last_name)
         self.items_bought = []
 
-    def get_items_bought(self, *items):
+    def get_items_bought(self):
+        separator = ", "
+        return self.first_name + " " + self.last_name + " bought: " + separator.join(map(str, self.items_bought))
+
+
+    def set_items_bought(self, *items):
         self.items_bought.append(items)
 
-    def set_items_bought(self):
-        separator = ", "
-        return self.first_name + " " + self.last_name + " bought: " + separator.join(map(str,self.items_bought))
+    def __str__(self):
+        return "I am a customer. My name is: " + self.first_name + " " + self.last_name

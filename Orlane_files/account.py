@@ -11,23 +11,16 @@ class Account:
     def deposit(self, amount):
         self.__balance += amount
 
+
     def withdraw(self, amount):
 
-        # if amount > self.__balance:
-        #     raise Exception('Error! Can not withdraw more than the balance.')
-        # self.__balance -= amount
-        try:
-            if amount < self.__balance:
-                self.__balance -= amount
-        except Exception:
-            print("Error! Cannot withdraw this amount.")
-        else:
-            return "Your balance is now: " + str(self.__balance)
-        finally:
-            pass
+        if amount > self.__balance:
+            raise InsufficientFundsException('Error! Can not withdraw more than the balance.')
+        self.__balance -= amount
+
 
     def get_balance(self):
-        return self.__balance
+        return "Your balance is " + str(self.__balance)
 
     def get_first_name(self):
         return self.first_name
@@ -37,3 +30,8 @@ class Account:
 
     def get_name(self):
         return "The name on this account is: " + self.first_name + " " + self.last_name
+
+
+class InsufficientFundsException(Exception):
+    'Error! Can not withdraw more than the balance.'
+    pass
